@@ -125,7 +125,7 @@ Within the **working directory** is a config file, getssl.cfg which is a simple 
 # The staging server is best for testing (hence set as default)
 CA="https://acme-staging.api.letsencrypt.org"
 # This server issues full certificates, however has rate limits
-#CA="https://acme-v01.api.letsencrypt.org"
+# CA="https://acme-v01.api.letsencrypt.org"
 
 AGREEMENT="https://letsencrypt.org/documents/LE-SA-v1.0.1-July-27-2015.pdf"
 
@@ -150,11 +150,11 @@ then, within the **working directory** there will be a folder for each certifica
 # see https://github.com/srvrco/getssl/wiki/Example-config-files for example configs
 #
 # The staging server is best for testing
-#CA="https://acme-staging.api.letsencrypt.org"
+# CA="https://acme-staging.api.letsencrypt.org"
 # This server issues full certificates, however has rate limits
-#CA="https://acme-v01.api.letsencrypt.org"
+# CA="https://acme-v01.api.letsencrypt.org"
 
-#AGREEMENT="https://letsencrypt.org/documents/LE-SA-v1.1.1-August-1-2016.pdf"
+# AGREEMENT="https://letsencrypt.org/documents/LE-SA-v1.1.1-August-1-2016.pdf"
 
 PRIVATE_KEY_ALG="rsa"
 
@@ -169,7 +169,7 @@ SANS="www.example.org"
 # If these start with ftp: then the next variables are ftpuserid:ftppassword:servername:ACL_location
 # These should be of the form "/path/to/your/website/folder/.well-known/acme-challenge"
 # where "/path/to/your/website/folder/" is the path, on your web server, to the web root for your domain.
-#ACL=('/var/www/${DOMAIN}/web/.well-known/acme-challenge'
+# ACL=('/var/www/${DOMAIN}/web/.well-known/acme-challenge'
 #     'ssh:server5:/var/www/${DOMAIN}/web/.well-known/acme-challenge'
 #     'ssh:sshuserid@server5:/var/www/${DOMAIN}/web/.well-known/acme-challenge'
 #     'ftp:ftpuserid:ftppassword:${DOMAIN}:/web/.well-known/acme-challenge')
@@ -178,9 +178,9 @@ SANS="www.example.org"
 # Location for all your certs, these can either be on the server (so full path name) or using ssh as for the ACL
 DOMAIN_CERT_LOCATION="ssh:server5:/etc/ssl/domain.crt"
 DOMAIN_KEY_LOCATION="ssh:server5:/etc/ssl/domain.key"
-#CA_CERT_LOCATION="/etc/ssl/chain.crt"
-#DOMAIN_CHAIN_LOCATION="" this is the domain cert and CA cert
-#DOMAIN_PEM_LOCATION="" this is the domain_key. domain cert and CA cert
+# CA_CERT_LOCATION="/etc/ssl/chain.crt"
+# DOMAIN_CHAIN_LOCATION="" this is the domain cert and CA cert
+# DOMAIN_PEM_LOCATION="" this is the domain_key. domain cert and CA cert
 
 
 # The command needed to reload apache / nginx or whatever you use
@@ -190,8 +190,8 @@ RELOAD_CMD="service apache2 reload"
 # smtps_deprecated, smtps, smtp_submission, xmpp, xmpps, ldaps or a port number which
 # will be checked for certificate expiry and also will be checked after
 # an update to confirm correct certificate is running (if CHECK_REMOTE) is set to true
-#SERVER_TYPE="https"
-#CHECK_REMOTE="true"
+# SERVER_TYPE="https"
+# CHECK_REMOTE="true"
 ```
 
 If a location for a file starts with ssh:  it is assumed the next part of the file is the hostname, followed by a colon, and then the path.
@@ -211,12 +211,12 @@ A typical config file for example.com and www.example.com on the same server wou
 # The staging server is best for testing
 CA="https://acme-staging.api.letsencrypt.org"
 # This server issues full certificates, however has rate limits
-#CA="https://acme-v01.api.letsencrypt.org"
+# CA="https://acme-v01.api.letsencrypt.org"
 
 # additional domains - this could be multiple domains / subdomains in a comma separated list
 SANS="www.example.com"
 
-#Acme Challenge Location.   The first line for the domain, the following ones for each additional domain
+# Acme Challenge Location.   The first line for the domain, the following ones for each additional domain
 ACL=('/var/www/example.com/web/.well-known/acme-challenge')
 
 USE_SINGLE_ACL="true"
@@ -252,7 +252,7 @@ these are available in getssl to check if the certificate is installed correctly
 | port number      |      |              |
 
 
-##Revoke a certificate
+## Revoke a certificate
 
 In general revoking a certificate is not required.
 
@@ -261,7 +261,7 @@ usage: getssl -r path/to/cert path/to/key [CA_server]
 You need to specify both the certificate you want to revoke, and the account or private domain key which was used to sign / obtain the original certificate.  The CA_server is an optional parameter and defaults to Let's Encrypt ( "https://acme-v01.api.letsencrypt.org" ) as that is currently the only Certificate Authority using the ACME protocol.
 
 
-##Elliptic curve keys
+## Elliptic curve keys
 You can use Elliptic curve keys for both the account key and the domain key (different of course, don't use the same key for both). prime256v1 (NIST P-256) and secp384r1 (NIST P-384) are both fully supported.  secp521r1 (NIST P-521) is included in the code, but not currently supported by Let's Encrypt).
 
 
